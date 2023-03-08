@@ -4,6 +4,8 @@
  */
 package datastructures.bounded_stack;
 
+import java.util.EmptyStackException;
+
 /**
  *
  * @author D00216500
@@ -11,7 +13,6 @@ package datastructures.bounded_stack;
 public class Bounded_stack {
 
     private Node first;
-
     private int numElements;
 
     public Bounded_stack() {
@@ -19,7 +20,7 @@ public class Bounded_stack {
         numElements = 0;
     }
 
-    public int size() {
+    public int count() {
         return numElements;
     }
 
@@ -28,24 +29,41 @@ public class Bounded_stack {
         return numElements == 0;
     }
 
-    public Node peek() {
-        if (numElements <= 0 || first == null) {
-            throw new IndexOutOfBoundsException("No data");
+    //peek mean looking at the first/ top of the stack
+    public String peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
         } else {
-
-            return first;
+            return first.data;
         }
 
     }
-    
-  
-
-    public void push(String value) {
+//push mena addfirst
+    public boolean push(String value) {
         Node newNode = new Node(value);
-        newNode.next = first;
-        first = newNode;
+        if (first == null) {
+            first = newNode;
+        } else {
+            newNode.next = first;
+            first = newNode;
+        }
         numElements++;
+        return true;
     }
+
+    
+    public String pop() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        } else{
+       String original = first.data;
+        first = first.next;
+        numElements--;
+        return original;
+        }
+    }
+
+
 
     private static class Node {
 
