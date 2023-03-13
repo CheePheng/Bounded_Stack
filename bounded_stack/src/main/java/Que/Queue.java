@@ -10,13 +10,13 @@ import java.util.NoSuchElementException;
  *
  * @author D00216500
  */
-public class QueClass {
+public class Queue {
 
     private Node first;
     private Node last;
-    private int size;
+    protected int size;
 
-    public QueClass() {
+    public Queue() {
         first = null;
         size = 0;
     }
