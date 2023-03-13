@@ -53,21 +53,21 @@ public class Queue {
     }
 
     //remove first element in que
-    public String poll() {
+    public Integer poll() {
         if (isEmpty()) {
             return null;
         }
         int original = first.data;
         first = first.next;
         size--;
-        return "Removed Value : " + original;
+        return original;
     }
 
-    public String peek() {
+    public Integer peek() {
         if (isEmpty()) {
             return null;
         } else {
-            return "First data " + first.data;
+            return first.data;
         }
 
     }
