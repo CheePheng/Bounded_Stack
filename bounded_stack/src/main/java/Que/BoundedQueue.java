@@ -22,6 +22,9 @@ public class BoundedQueue extends Queue {
 
     public BoundedQueue(int capacity) {
         super();
+//        if(capacity <=0){
+//          throw new IndexOutOfBoundsException;
+//        }
         this.capacity = capacity;
     }
 
